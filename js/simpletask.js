@@ -1,23 +1,13 @@
-var simpletask = {
-  name: 'Simpletask'
-};
+angular.module('todoApp', [])
+  .controller('TodoController', ['$scope', function($scope) {
+    $scope.todos = [];
 
-function getSummaryTask() {
-  return $("#simpletask-task-summary").val();
-}
+    $scope.addTodo = function() {
+      $scope.todos.push({
+        text: $scope.todoText,
+        done: false
+      });
 
-function cleanSummaryTask() {
-  $("#simpletask-task-summary").val('');
-}
-
-$(
-  function ($) {
-    $("#simpletask-title").text(simpletask.name);
-
-    $("#simpletask-add-task").click(function(event, data) {
-      alert(getSummaryTask());
-
-      cleanSummaryTask();
-    });
-  }
-);
+      $scope.todoText = '';
+    }
+  }]);
