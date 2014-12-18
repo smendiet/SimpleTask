@@ -3,11 +3,15 @@ angular.module('todoApp', [])
     $scope.todos = [];
 
     $scope.addTodo = function() {
-      $scope.todos.push({
-        text: $scope.todoText,
-        done: false
-      });
+      if ($scope.todoText != '' && typeof $scope.todoText != 'undefined') {
+        $scope.todos.push({
+          text: $scope.todoText,
+          done: false
+        });
 
-      $scope.todoText = '';
+        $scope.todoText = undefined;
+      } else {
+        $("#myModal").modal();
+      }
     }
   }]);
